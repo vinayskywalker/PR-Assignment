@@ -2,12 +2,23 @@ import numpy as np
 import idx2numpy
 import matplotlib.pyplot as plt
 from numpy import linalg as LA
+import os
+import random
 
 file1 = 'data/train-images-idx3-ubyte'
 file2 = 'data/train-labels-idx1-ubyte'
 
 arr1 = idx2numpy.convert_from_file(file1)
 arr2 = idx2numpy.convert_from_file(file2)
+
+def add_noise_with_level(data,level_of_noise):
+    for i in range(len(data)):
+        noise = np.random.normal(0,10,28*28)
+        data[i] = np.add(data[i], float(level_of_noise)*noise)
+
+    return data
+
+
 
 def principle_comp_analysis(data,k):
     cov_matrix = np.cov(data,rowvar=False)
@@ -63,6 +74,7 @@ if __name__ == '__main__':
     k = int(input("Enter K:\n"))
     data = digit_list[input_number]
     data = np.asarray(data)
+    data = add_noise_with_level(data,0.2)
     # print(data.shape)
     mean_data = np.mean(data,axis=0,dtype=float)
     img = np.reshape(mean_data,(28,28))

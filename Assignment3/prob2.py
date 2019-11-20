@@ -11,12 +11,7 @@ file2 = 'data/train-labels-idx1-ubyte'
 arr1 = idx2numpy.convert_from_file(file1)
 arr2 = idx2numpy.convert_from_file(file2)
 
-def add_noise_with_level(data,level_of_noise):
-    for i in range(len(data)):
-        noise = np.random.normal(0,10,28*28)
-        data[i] = np.add(data[i], float(level_of_noise)*noise)
 
-    return data
 
 
 
@@ -54,7 +49,15 @@ def principle_comp_analysis(data,k):
     
 
     
+def add_noise_with_level(data,level_of_noise):
+    for i in range(len(data)):
+        noise = np.random.normal(0,10,28*28)
+        data[i] = np.add(data[i], float(level_of_noise)*noise)
 
+    return data
+
+
+    
 
 
 

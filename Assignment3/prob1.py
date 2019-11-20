@@ -40,16 +40,6 @@ def principle_comp_analysis(data,k):
     plt.imshow(np.clip(img,0,255),'gray')
     plt.show()
 
-    
-
-    
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
